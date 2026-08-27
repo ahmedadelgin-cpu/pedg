@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="Image.jfif">
+    <title>أحمد حسن | مبرمج ومطور مواقع</title>
+    <style>
+        :root {
+            --primary-color: #2563eb; 
+            --bg-light: #f8fafc;
+            --bg-card: white;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        body.dark-mode {
+            --bg-light: #000000;
+            --bg-card: #111111;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- زر التبديل --- */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1.5px solid var(--text-main);
+            background: #0f172a; 
+            color: #ffffff;     
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        body.dark-mode .theme-toggle-btn {
+            background: #ffffff; 
+            color: #000000;      
+            border-color: #ffffff;
+        }
+
+        header {
+            padding: 3rem 1rem 2rem;
+            text-align: center;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        header .job-title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* --- معرض المشاريع --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        /* تعديل مساحة الصورة لتستقبل ملف jfif */
+        .project-img-placeholder {
+            width: 100%;
+            height: 140px; 
+            background: #1a1a1a;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(128,128,128,0.1);
+        }
+
+        .project-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لضمان ملء المساحة دون تشويه */
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img-placeholder img {
+            transform: scale(1.1); /* تأثير بسيط عند الوقوف على الكرت */
+        }
+
+        .project-content {
+            padding: 1.2rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-view {
+            display: inline-block;
+            padding: 8px 25px;
+            background: var(--primary-color);
+            color: #fff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #22c55e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(128, 128, 128, 0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- زر التبديل -->
+    <button class="theme-toggle-btn" onclick="toggleMode()">
+        <span id="mode-icon"><i class="fas fa-sun"></i></span>
+        <span id="mode-text">Night Mode</span>
+    </button>
+
+    <header>
+        <div class="header-main">
+            <img src="Image.jfif" alt="Logo" class="header-logo">
+            <h1>أحمد حسن</h1>
+        </div>
+        <p class="job-title">Front-End & Back-End Developer</p>
+        <div class="contact-info">
+            <span><i class="fas fa-phone-alt"></i> 01122278442</span>
+            <span><i class="fas fa-envelope"></i> ahmed.adelgin@gmail.com</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="section-title-wrapper">
+            <h2 class="section-title">معرض أعمالي</h2>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- مشروع 1 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="Image.jfif" alt="مشروع 1">
+                </div>
+                <div class="project-content">
+                    <h3>مشروع ويب ذكي</h3>
+                    <p>وصف تقني موجز عن المميزات والحلول التي تمت برمجتها.</p>
+                    <a href="#" class="btn-view">عرض</a>
+                </div>
+            </div>
+
+            <!-- مشروع 2 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="Image.jfif" alt="مشروع 2">
+                </div>
+                <div class="project-content">
+                    <h3>إدارة بيانات</h3>
+                    <p>برمجة لوحات تحكم وإدارة قواعد البيانات بكفاءة عالية.</p>
+                    <a href="#" class="btn-view">عرض</a>
+                </div>
+            </div>
+
+            <!-- مشروع 3 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="Image.jfif" alt="مشروع 3">
+                </div>
+                <div class="project-content">
+                    <h3>واجهات تفاعلية</h3>
+                    <p>تصميم وتطوير واجهات مستخدم متجاوبة (Responsive UI).</p>
+                    <a href="#" class="btn-view">عرض</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201122278442" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <p>© جميع الحقوق محفوظة - أحمد حسن 2026</p>
+    </footer>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const btnText = document.getElementById('mode-text');
+            const btnIcon = document.getElementById('mode-icon');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                btnText.innerText = 'Night Mode';
+                btnIcon.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                btnText.innerText = 'Dark Mode';
+                btnIcon.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
