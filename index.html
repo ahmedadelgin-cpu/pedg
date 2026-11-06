@@ -102,10 +102,23 @@
             gap: 20px;
             font-weight: bold;
             font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 1rem;
         }
@@ -137,7 +150,7 @@
         /* --- معرض المشاريع --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
         }
 
@@ -148,30 +161,44 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid rgba(128, 128, 128, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* تعديل مساحة الصورة لتستقبل ملف jfif */
         .project-img-placeholder {
             width: 100%;
             height: 140px; 
             background: #1a1a1a;
             overflow: hidden;
             border-bottom: 1px solid rgba(128,128,128,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .project-img-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* لضمان ملء المساحة دون تشويه */
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
         .project-card:hover .project-img-placeholder img {
-            transform: scale(1.1); /* تأثير بسيط عند الوقوف على الكرت */
+            transform: scale(1.08);
+        }
+
+        .project-img-placeholder i {
+            font-size: 3rem;
+            color: var(--text-muted);
         }
 
         .project-content {
             padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-content h3 {
@@ -183,6 +210,7 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             margin-bottom: 15px;
+            line-height: 1.5;
         }
 
         .btn-view {
@@ -194,6 +222,13 @@
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.85rem;
+            margin-top: auto;
+            align-self: center;
+        }
+
+        .btn-view:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
         }
 
         .whatsapp-float {
@@ -212,6 +247,10 @@
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 1001;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
 
         footer {
@@ -234,13 +273,13 @@
 
     <header>
         <div class="header-main">
-            <img src="Image.jfif" alt="Logo" class="header-logo">
+            <img src="Image.jfif" alt="Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/50'">
             <h1>أحمد حسن</h1>
         </div>
         <p class="job-title">Front-End & Back-End Developer</p>
         <div class="contact-info">
-            <span><i class="fas fa-phone-alt"></i> 01122278442</span>
-            <span><i class="fas fa-envelope"></i> ahmed.adelgin@gmail.com</span>
+            <a href="tel:01122278442"><i class="fas fa-phone-alt"></i> 01122278442</a>
+            <a href="mailto:ahmed.adelgin@gmail.com"><i class="fas fa-envelope"></i> ahmed.adelgin@gmail.com</a>
         </div>
     </header>
 
@@ -250,80 +289,180 @@
         </div>
         
         <div class="projects-grid">
-            <!-- مشروع 1 -->
+
+            <!-- 1. منصة رفع المشاريع -->
             <div class="project-card">
                 <div class="project-img-placeholder">
-                    <img src="صورة مطعم ابو كيان .png" alt="مشروع 1">
+                    <img src="Image.jfif" alt="منصة رفع المشاريع" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-cloud-upload-alt\'></i>';">
+                </div>
+                <div class="project-content">
+                    <h3>منصة رفع المشاريع</h3>
+                    <p>صفحة خاصة برفع وإدارة المشاريع لأحمد حسن</p>
+                    <a href="https://pedg.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 2. مطعم أبو كيان -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صورة مطعم ابو كيان .png" alt="مشروع أكل أبو كيان" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-utensils\'></i>';">
                 </div>
                 <div class="project-content">
                     <h3>مشروع صفحة اكل</h3>
-                    <p>صفحة اكل باسم ابو كيان بشكل احترافى </p>
-                    <a href="https://food-xi-six-54.vercel.app/" class="btn-view">عرض</a>
+                    <p>صفحة اكل باسم ابو كيان بشكل احترافى</p>
+                    <a href="https://food-xi-six-54.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
                 </div>
             </div>
 
-            <!-- مشروع 2 -->
+            <!-- 3. صفحة اكل 1 -->
             <div class="project-card">
                 <div class="project-img-placeholder">
-                    <img src="صورة صفحة العطور.png" alt="مشروع 2">
+                    <i class="fas fa-burger"></i>
                 </div>
                 <div class="project-content">
-                    <h3>مشروع صفحة عطور </h3>
-                    <p>   سحر يدوم وذكرى لا تنسى فى كل رشة </p>
-                    <a href="https://fragrances-sage.vercel.app/" class="btn-view">عرض</a>
+                    <h3>مشروع مطعم واستعراض أطعمة</h3>
+                    <p>تصميم تفاعلي لعرض قائمة الطعام والأصناف</p>
+                    <a href="https://food1-beta.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
                 </div>
             </div>
 
-
-<!-- مشروع 4 -->
+            <!-- 4. صفحة الطلبات -->
             <div class="project-card">
                 <div class="project-img-placeholder">
-                    <img src="  صورة صفحة الملابس.png     " alt="مشروع 2">
+                    <i class="fas fa-receipt"></i>
                 </div>
                 <div class="project-content">
-                    <h3>مشروع صفحة ملابس شتوى </h3>
-                    <p>   افضل الملابس الشتوى  </p>
-                    <a href="https://winter-store-green.vercel.app/" class="btn-view">عرض</a>
-                </div>
-            </div>
-   <!-- مشروع 5 -->
-            <div class="project-card">
-                <div class="project-img-placeholder">
-                    <img src="  صفحة بيع منتجات جيم.png     " alt="مشروع 2">
-                </div>
-                <div class="project-content">
-                    <h3>مشروع صفحة بيع منتجات جيم </h3>
-                    <p>   افضل المنتجات  </p>
-                    <a href="https://gymproducts.vercel.app/" class="btn-view">عرض</a>
-                </div>
-            </div>
-                <!-- مشروع 6 -->
-            <div class="project-card">
-                <div class="project-img-placeholder">
-                    <img src="  صفحة جيم و اشتراكات فى.png     " alt="مشروع 2">
-                </div>
-                <div class="project-content">
-                    <h3>مشروع صفحة جيم و اشتراكات   </h3>
-                    <p>  افضل الاسعار  </p>
-                    <a href="https://gympage-navy.vercel.app/" class="btn-view">عرض</a>
+                    <h3>صفحة الطلبات (Food Orders)</h3>
+                    <p>لوحة استعراض وإدارة طلبات الطعام</p>
+                    <a href="https://food1-beta.vercel.app/orders" target="_blank" class="btn-view">عرض المشروع</a>
                 </div>
             </div>
 
-            <!-- مشروع 3 -->
+            <!-- 5. صفحة المتابعة -->
             <div class="project-card">
                 <div class="project-img-placeholder">
-                    <img src="صفحة بن .png" alt="مشروع 3">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="project-content">
+                    <h3>صفحة المتابعة والطلبات</h3>
+                    <p>نظام إلكتروني لإدارة الطلبات ومتابعتها</p>
+                    <a href="https://ordershtml.vercel.app" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 6. العطور -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صورة صفحة العطور.png" alt="مشروع عطور" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-spray-can\'></i>';">
+                </div>
+                <div class="project-content">
+                    <h3>مشروع صفحة عطور</h3>
+                    <p>سحر يدوم وذكرى لا تنسى فى كل رشة</p>
+                    <a href="https://fragrances-sage.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 7. بن أبو كيان -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صفحة بن .png" alt="مشروع بن" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-coffee\'></i>';">
                 </div>
                 <div class="project-content">
                     <h3>مشروع صفحة بن</h3>
-                    <p>صفحة خاصة بى بن ابو كيان </p>
-                    <a href="https://bin-eight-livid.vercel.app/" class="btn-view">عرض</a>
+                    <p>صفحة خاصة بـ بن أبو كيان</p>
+                    <a href="https://bin-eight-livid.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
                 </div>
             </div>
+
+            <!-- 8. الملابس الشتوي -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صورة صفحة الملابس.png" alt="مشروع ملابس" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tshirt\'></i>';">
+                </div>
+                <div class="project-content">
+                    <h3>مشروع صفحة ملابس شتوى</h3>
+                    <p>متجر إلكتروني لعرض أفضل الملابس الشتوية</p>
+                    <a href="https://winter-store-green.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 9. منتجات الجيم -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صفحة بيع منتجات جيم.png" alt="منتجات جيم" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-dumbbell\'></i>';">
+                </div>
+                <div class="project-content">
+                    <h3>بيع منتجات الجيم</h3>
+                    <p>متجر مخصص لمنتجات ومكملات وأدوات الجيم</p>
+                    <a href="https://gymproducts.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 10. جيم واشتراكات -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <img src="صفحة جيم و اشتراكات فى.png" alt="اشتراكات جيم" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-running\'></i>';">
+                </div>
+                <div class="project-content">
+                    <h3>صفحة جيم واشتراكات</h3>
+                    <p>استعراض باقات واشتراكات الجيم بأفضل الأسعار</p>
+                    <a href="https://gympage-navy.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 11. صفحة جدول الضرب -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="project-content">
+                    <h3>صفحة جداول الضرب</h3>
+                    <p>تطبيق ويب تعليمي وتفاعلي لحساب وحفظ جدول الضرب</p>
+                    <a href="https://table-eight-kappa.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 12. صفحة التدريب -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="project-content">
+                    <h3>صفحة التدريب (Training)</h3>
+                    <p>منصة تفاعلية خاصة بالتدريبات والتمارين</p>
+                    <a href="https://training-omega-eight.vercel.app" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 13. Matrix Bank الرئيسية -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Matrix Bank - الصفحة الرئيسية</h3>
+                    <p>واجهة بنكية حديثة ومتطورة لتقديم الخدمات المصرفية</p>
+                    <a href="https://matrix-bank.vercel.app/" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
+            <!-- 14. Matrix Bank لوحة البيانات -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Matrix Bank - نقل البيانات</h3>
+                    <p>لوحة تحكم إدارية خاصة بنقل ومعالجة بيانات البنك</p>
+                    <a href="https://matrix-bank.vercel.app/admin-data.html" target="_blank" class="btn-view">عرض المشروع</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <a href="" class="whatsapp-float" target="_blank">
+    <!-- زر واتساب العائم برقمك -->
+    <a href="https://wa.me/201122278442" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
